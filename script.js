@@ -49,7 +49,7 @@ if (contactForm) {
         
         window.location.href = `mailto:omegariyazz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
-        alert(`Thank you ${name}! Mohamed Riyaz will contact you soon.\n\nYou can also WhatsApp: 9629941092`);
+        alert(`Thank you ${name}! Mohamed Riyaz will contact you soon.\n\nYou can also WhatsApp: 9842763527092`);
         contactForm.reset();
     });
 }
@@ -75,8 +75,6 @@ const galleryImages = [
     'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
     'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
     'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg',
-    'https://ik.imagekit.io/albaithinteriors/Al-baith.png',
-    'https://ik.imagekit.io/albaithinteriors/al-baith-logo.png',
     
     // Set 2 (Images 9-16 - repeating for now, replace with actual images later)
     'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
