@@ -32,7 +32,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact Form - EmailJS Integration
+// Contact Form - Email Integration
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -44,11 +44,9 @@ if (contactForm) {
         const service = document.getElementById('service').value;
         const message = document.getElementById('message').value;
         
-        // Create email body
         const subject = `New Inquiry from ${name} - Al-Baith Interiors`;
         const body = `New Website Inquiry\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}`;
         
-        // Open mailto link
         window.location.href = `mailto:omegariyazz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
         alert(`Thank you ${name}! Mohamed Riyaz will contact you soon.\n\nYou can also WhatsApp: 9629941092`);
@@ -68,8 +66,49 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// GALLERY MODAL - ALL IMAGES
+// GALLERY MODAL - ALL 40 IMAGES
 const galleryImages = [
+    // Set 1 (Images 1-8)
+    'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg',
+    'https://ik.imagekit.io/albaithinteriors/Al-baith.png',
+    'https://ik.imagekit.io/albaithinteriors/al-baith-logo.png',
+    
+    // Set 2 (Images 9-16 - repeating for now, replace with actual images later)
+    'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg',
+    'https://ik.imagekit.io/albaithinteriors/Al-baith.png',
+    'https://ik.imagekit.io/albaithinteriors/al-baith-logo.png',
+    
+    // Set 3 (Images 17-24)
+    'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg',
+    'https://ik.imagekit.io/albaithinteriors/Al-baith.png',
+    'https://ik.imagekit.io/albaithinteriors/al-baith-logo.png',
+    
+    // Set 4 (Images 25-32)
+    'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg',
+    'https://ik.imagekit.io/albaithinteriors/Al-baith.png',
+    'https://ik.imagekit.io/albaithinteriors/al-baith-logo.png',
+    
+    // Set 5 (Images 33-40)
     'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
     'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
     'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
