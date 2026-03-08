@@ -53,4 +53,79 @@ window.addEventListener('scroll', () => {
             navbar.classList.remove('scrolled');
         }
     }
+
+    // Gallery Modal Functionality
+const galleryImages = [
+  'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
+  'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
+  'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
+  'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
+  'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
+  'https://ik.imagekit.io/albaithinteriors/IMG-20251230-WA0156.jpg',
+  'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg',
+  'https://ik.imagekit.io/albaithinteriors/Al-baith.png'
+];
+
+let currentImageIndex = 0;
+
+function openGalleryModal(imageIndex) {
+  const modal = document.getElementById('galleryModal');
+  const modalImg = document.getElementById('modalImage');
+  const caption = document.getElementById('modalCaption');
+  
+  currentImageIndex = imageIndex;
+  modal.style.display = 'flex';
+  modalImg.src = galleryImages[currentImageIndex];
+  caption.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal() {
+  const modal = document.getElementById('galleryModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function changeImage(direction) {
+  currentImageIndex += direction;
+  
+  if (currentImageIndex < 0) {
+    currentImageIndex = galleryImages.length - 1;
+  } else if (currentImageIndex >= galleryImages.length) {
+    currentImageIndex = 0;
+  }
+  
+  const modalImg = document.getElementById('modalImage');
+  const caption = document.getElementById('modalCaption');
+  modalImg.src = galleryImages[currentImageIndex];
+  caption.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
+}
+
+// Add click listeners to portfolio items
+document.addEventListener('DOMContentLoaded', () => {
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  
+  portfolioItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      openGalleryModal(index);
+    });
+    
+    // Add cursor pointer style
+    item.style.cursor = 'pointer';
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('galleryModal');
+    if (modal.style.display === 'flex') {
+      if (e.key === 'ArrowLeft') {
+        changeImage(-1);
+      } else if (e.key === 'ArrowRight') {
+        changeImage(1);
+      } else if (e.key === 'Escape') {
+        closeGalleryModal();
+      }
+    }
+  });
+});
 });
