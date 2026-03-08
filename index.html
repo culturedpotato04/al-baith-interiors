@@ -108,7 +108,7 @@
                     <p>Strategic lighting solutions that create the perfect ambiance and highlight your space's best features.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-kitchen-set"></i></div>
+                    <div class="service-icon"><span style="font-size: 3rem; display: inline-block;">🏠</span>></i></div>
                     <h3>Modular Solutions</h3>
                     <p>Modern modular kitchens, wardrobes, and storage solutions designed for maximum efficiency and style.</p>
                 </div>
@@ -257,6 +257,17 @@
         </div>
     </footer>
 
+
+      <!-- Gallery Modal -->
+  <div id="galleryModal" class="gallery-modal">
+    <span class="modal-close" onclick="closeGalleryModal()">&times;</span>
+    <button class="modal-nav prev" onclick="changeImage(-1)">&#10094;</button>
+    <div class="modal-content-wrapper">
+      <img id="modalImage" class="modal-content" src="" alt="Gallery Image">
+      <div id="modalCaption" class="modal-caption"></div>
+    </div>
+    <button class="modal-nav next" onclick="changeImage(1)">&#10095;</button>
+  </div>
     <script src="script.js"></script>
 </body>
 </html>
