@@ -153,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   portfolioItems.forEach((item, index) => {
     item.addEventListener('click', () => {
-      openGalleryModal(index);
+      
+              alert('Portfolio item clicked! Index: ' + index);openGalleryModal(index);
     });
     
     // Add cursor pointer style
