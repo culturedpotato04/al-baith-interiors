@@ -150,6 +150,7 @@ function changeImage(direction) {
 // Initialize gallery on page load
 document.addEventListener('DOMContentLoaded', () => {
   const portfolioItems = document.querySelectorAll('.portfolio-item');
+      alert('Found ' + portfolioItems.length + ' portfolio items');
   
   portfolioItems.forEach((item, index) => {
     item.addEventListener('click', () => {
