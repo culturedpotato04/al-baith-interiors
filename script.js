@@ -1,178 +1,143 @@
-// Mobile Menu Toggle
+// Mobile Menu
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
-
 if (mobileMenuToggle) {
-  mobileMenuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    mobileMenuToggle.classList.toggle('active');
-  });
+    mobileMenuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+    });
 }
 
-// Close mobile menu when a link is clicked
+// Close mobile menu when link clicked
 document.querySelectorAll('.nav-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (navMenu) navMenu.classList.remove('active');
-    if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-  });
+    link.addEventListener('click', () => {
+        if (navMenu) navMenu.classList.remove('active');
+        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+    });
 });
 
-// Smooth scrolling for anchor links
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    const target = document.querySelector(targetId);
-    if (target) {
-      window.scrollTo({
-        top: target.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
-  });
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
 });
 
-// Google Forms Integration for Contact Form
-const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSfFormID/formResponse';
-
+// Contact Form - EmailJS Integration
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      service: document.getElementById('service').value,
-      message: document.getElementById('message').value
-    };
-    
-    // Send email to omegariyazz@gmail.com using EmailJS-style approach
-    const emailContent = `
-New Inquiry from Al-Baith Interiors Website!
-
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Service: ${formData.service}
-
-Message:
-${formData.message}
-
----
-Sent from Al-Baith Interiors Contact Form
-    `.trim();
-    
-    // For now, show success message and open email client
-    const mailtoLink = `mailto:omegariyazz@gmail.com?subject=New Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(emailContent)}`;
-    
-    alert(`Thank you ${formData.name}! Mohamed Riyaz will get back to you soon.\n\nFor immediate response, you can also WhatsApp: 9629941092`);
-    
-    // Open user's email client as backup
-    window.location.href = mailtoLink;
-    
-    contactForm.reset();
-  });
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+        
+        // Create email body
+        const subject = `New Inquiry from ${name} - Al-Baith Interiors`;
+        const body = `New Website Inquiry\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}`;
+        
+        // Open mailto link
+        window.location.href = `mailto:omegariyazz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        alert(`Thank you ${name}! Mohamed Riyaz will contact you soon.\n\nYou can also WhatsApp: 9629941092`);
+        contactForm.reset();
+    });
 }
 
-// Navbar background change on scroll
+// Navbar scroll effect
 window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
-  }
 });
 
-// Gallery Modal Functionality with ALL IMAGES
+// GALLERY MODAL - ALL IMAGES
 const galleryImages = [
-  // Portfolio images (showing on homepage)
-  'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
-  'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
-  'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
-  'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
-  'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
-  'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg', // Fixed Portfolio 6 - using hero image
-  
-  // Additional gallery images (rest of the portfolio)
-  'https://ik.imagekit.io/albaithinteriors/Al-baith.png',
-  'https://ik.imagekit.io/albaithinteriors/al-baith-logo.png'
-  
-  // TO ADD MORE: Upload images to ImageKit and add URLs here like:
-  // 'https://ik.imagekit.io/albaithinteriors/YOUR-IMAGE-NAME.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182406.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182438.jpg',
+    'https://ik.imagekit.io/albaithinteriors/20260103_182410.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0111.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20251227-WA0113.jpg',
+    'https://ik.imagekit.io/albaithinteriors/IMG-20260106-WA0142.jpg',
+    'https://ik.imagekit.io/albaithinteriors/Al-baith.png',
+    'https://ik.imagekit.io/albaithinteriors/al-baith-logo.png'
 ];
 
 let currentImageIndex = 0;
 
-function openGalleryModal(imageIndex) {
-  const modal = document.getElementById('galleryModal');
-  const modalImg = document.getElementById('modalImage');
-  const caption = document.getElementById('modalCaption');
-  
-  if (!modal || !modalImg || !caption) return;
-  
-  currentImageIndex = imageIndex;
-  modal.style.display = 'flex';
-  modalImg.src = galleryImages[currentImageIndex];
-  caption.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
-  document.body.style.overflow = 'hidden';
+function openGalleryModal(index) {
+    const modal = document.getElementById('galleryModal');
+    const modalImg = document.getElementById('modalImage');
+    const caption = document.getElementById('modalCaption');
+    
+    if (!modal || !modalImg || !caption) return;
+    
+    currentImageIndex = index;
+    modal.style.display = 'flex';
+    modalImg.src = galleryImages[currentImageIndex];
+    caption.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
+    document.body.style.overflow = 'hidden';
 }
 
 function closeGalleryModal() {
-  const modal = document.getElementById('galleryModal');
-  if (!modal) return;
-  modal.style.display = 'none';
-  document.body.style.overflow = 'auto';
+    const modal = document.getElementById('galleryModal');
+    if (!modal) return;
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
 
 function changeImage(direction) {
-  currentImageIndex += direction;
-  
-  if (currentImageIndex < 0) {
-    currentImageIndex = galleryImages.length - 1;
-  } else if (currentImageIndex >= galleryImages.length) {
-    currentImageIndex = 0;
-  }
-  
-  const modalImg = document.getElementById('modalImage');
-  const caption = document.getElementById('modalCaption');
-  if (!modalImg || !caption) return;
-  
-  modalImg.src = galleryImages[currentImageIndex];
-  caption.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
+    currentImageIndex += direction;
+    
+    if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+    } else if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+    }
+    
+    const modalImg = document.getElementById('modalImage');
+    const caption = document.getElementById('modalCaption');
+    if (!modalImg || !caption) return;
+    
+    modalImg.src = galleryImages[currentImageIndex];
+    caption.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
 }
 
-// Initialize gallery on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-      alert('Found ' + portfolioItems.length + ' portfolio items');
-  
-  portfolioItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      
-              alert('Portfolio item clicked! Index: ' + index);openGalleryModal(index);
+// Wait for page load then attach click handlers
+window.addEventListener('load', function() {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    portfolioItems.forEach((item, index) => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => {
+            openGalleryModal(index);
+        });
     });
     
-    // Add cursor pointer style
-    item.style.cursor = 'pointer';
-  });
-  
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('galleryModal');
-    if (modal && modal.style.display === 'flex') {
-      if (e.key === 'ArrowLeft') {
-        changeImage(-1);
-      } else if (e.key === 'ArrowRight') {
-        changeImage(1);
-      } else if (e.key === 'Escape') {
-        closeGalleryModal();
-      }
-    }
-  });
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('galleryModal');
+        if (modal && modal.style.display === 'flex') {
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            else if (e.key === 'ArrowRight') changeImage(1);
+            else if (e.key === 'Escape') closeGalleryModal();
+        }
+    });
 });
